@@ -1,0 +1,19 @@
+{
+  "name": "web-end",
+  "version": "1.0.0",
+  "description": "provide interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renwanjun/node-end.git"
+  },
+  "author": "renwj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renwanjun/node-end/issues"
+  },
+  "homepage": "https://github.com/renwanjun/node-end#readme"
+}
