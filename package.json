@@ -2,8 +2,12 @@
   "name": "web-end",
   "version": "1.0.0",
   "description": "provide interface",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "build": "rimraf dist/ && babel ./server.js --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "prod": "npm run build && node dist/server.js",
+    "dev-build": "babel ./server.js -d ./dist -s",
+    "start": "npm run dev-build && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +19,22 @@
   "bugs": {
     "url": "https://github.com/renwanjun/node-end/issues"
   },
-  "homepage": "https://github.com/renwanjun/node-end#readme"
+  "homepage": "https://github.com/renwanjun/node-end#readme",
+  "dependencies": {
+    "connect": "^3.6.5",
+    "express": "^4.16.2",
+    "mime": "~1.2.7",
+    "socket.io": "~0.9.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "protractor": "~5.1.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "~2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "~2.2.0"
+  }
 }
