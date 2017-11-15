@@ -6,30 +6,44 @@ import path from 'path';
 import mime from 'mime';
 import connect from 'connect';
 
+// 业务逻辑
+// import admin from './src/admin/index'
+
+//connect中间件组件是一个函数，他拦截HTTP服务器提供得请求和相应对象，执行逻辑然后或者结束响应，或者把它传递给下一个中间件组件。Connect用分排期把中间件'连接'在一起
+
 const app=connect();
+// app.all('*', function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+//     res.header("X-Powered-By", ' 3.2.1');
+//     res.header("Content-Type", "application/json;charset=utf-8");
+//     next();
+// });
+
+``
 app.use(logger);
 // app.use('/',restrict);
-app.use('/admin',restrict); // 路由
-app.use('/admin',admin);
+// 服务器挂载
+app.use('/admin',restrictAccess) 
+   .use('/admin',admin);
 
 app.listen('3006',function(){
     console.log('server listening on port 3006')
 })
 
-// logger中间件--打日志
+// logger中间件--记录请求日志
 function logger(req,res,next){
     console.log('%s %s',req.method,req.url);
     next();
 }
 function test(req,res,next){
     res.setHeader('Content-Type','text/plain');
-    res.setHeader("Access-Control-Allow-Origin", "*");  // 允许跨域
-    //告诉浏览器编码方式  
-    res.setHeader("Content-Type","text/html;charset=UTF-8" ); 
     res.end('hello world');
 }
 
-function restrict(req,res,next){
+// 登录认证中间件  确保访问页面得是有效用户
+function restrictAccess(req,res,next){
     // var authorization=req.headers.authorization;
     // if(!authorization)return next(new Error('Unauthorized'));
 
@@ -37,7 +51,11 @@ function restrict(req,res,next){
     // var scheme=parts[0];
     // var auth=new Buffer(parts[1],'base64').toString().split(':');
     // var user=auth[0];
-    // var pass=auth[1];
+    // var pass=auth[1];  
+    
+    res.setHeader("Access-Control-Allow-Origin", "*");  // 允许跨域
+    //告诉浏览器编码方式  
+    res.setHeader("Content-Type","text/html;charset=UTF-8" ); 
     next();
     // authenticateWithDataBase(user,pass,function(err){
     //      if(err) return next(err);
@@ -53,5 +71,15 @@ function admin(req,res,next){
         case '/':
         default:
         res.end('try /login');
+    }
+}
+
+// 创建可配置得中间件
+function setup(formate){
+    // 这是逻辑
+    var regexp = / :(\W+) /g;
+    // 此闭包做中间件得初始化
+    return function logger (req,res,next){
+        // 中间逻辑
     }
 }
