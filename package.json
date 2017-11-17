@@ -4,9 +4,9 @@
   "description": "provide interface",
   "main": "server.js",
   "scripts": {
-    "build": "rimraf dist/ && babel ./server.js --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rimraf dist/ && babel ./src --out-dir ./dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "prod": "npm run build && node dist/server.js",
-    "dev-build": "babel ./server.js -d ./dist -s",
+    "dev-build": "babel ./src -d ./dist -s",
     "start": "npm run dev-build && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

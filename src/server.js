@@ -1,5 +1,5 @@
 'use strict'
-console.log(12)
+
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
@@ -7,7 +7,11 @@ import mime from 'mime';
 import connect from 'connect';
 
 // 业务逻辑
-// import admin from './src/admin/index'
+import logger from './logger'
+
+
+
+import admin from './admin'
 
 //connect中间件组件是一个函数，他拦截HTTP服务器提供得请求和相应对象，执行逻辑然后或者结束响应，或者把它传递给下一个中间件组件。Connect用分排期把中间件'连接'在一起
 
@@ -21,26 +25,19 @@ const app=connect();
 //     next();
 // });
 
-``
-app.use(logger);
+// 日志中间件
+app.use(logger(':method :url'));
 // app.use('/',restrict);
-// 服务器挂载
+// admin 服务器挂载
 app.use('/admin',restrictAccess) 
-   .use('/admin',admin);
+   .use('/admin',admin.main);
 
+// 服务器启动
 app.listen('3006',function(){
     console.log('server listening on port 3006')
 })
 
-// logger中间件--记录请求日志
-function logger(req,res,next){
-    console.log('%s %s',req.method,req.url);
-    next();
-}
-function test(req,res,next){
-    res.setHeader('Content-Type','text/plain');
-    res.end('hello world');
-}
+
 
 // 登录认证中间件  确保访问页面得是有效用户
 function restrictAccess(req,res,next){
@@ -53,7 +50,7 @@ function restrictAccess(req,res,next){
     // var user=auth[0];
     // var pass=auth[1];  
     
-    res.setHeader("Access-Control-Allow-Origin", "*");  // 允许跨域
+    res.setHeader("Access-Control-Allow-Origins", "*");  // 允许跨域
     //告诉浏览器编码方式  
     res.setHeader("Content-Type","text/html;charset=UTF-8" ); 
     next();
@@ -63,23 +60,14 @@ function restrictAccess(req,res,next){
     //  });
 
 }
-function admin(req,res,next){
-    switch(req.url){
-        case '/login':
-        test(req,res,next);
-        break;
-        case '/':
-        default:
-        res.end('try /login');
-    }
-}
 
-// 创建可配置得中间件
-function setup(formate){
-    // 这是逻辑
-    var regexp = / :(\W+) /g;
-    // 此闭包做中间件得初始化
-    return function logger (req,res,next){
-        // 中间逻辑
+const routes={
+    GET:{
+        '/users':function(req,res){
+            res.end('tobi,loki')
+        },
+        '/user/:id':function(req,res,id){
+
+        }
     }
 }
