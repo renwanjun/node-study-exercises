@@ -8,9 +8,6 @@ import connect from 'connect';
 
 // 业务逻辑
 import logger from './logger'
-
-
-
 import admin from './admin'
 
 //connect中间件组件是一个函数，他拦截HTTP服务器提供得请求和相应对象，执行逻辑然后或者结束响应，或者把它传递给下一个中间件组件。Connect用分排期把中间件'连接'在一起
@@ -64,6 +61,7 @@ function restrictAccess(req,res,next){
 const routes={
     GET:{
         '/users':function(req,res){
+            console.log('ss')
             res.end('tobi,loki')
         },
         '/user/:id':function(req,res,id){

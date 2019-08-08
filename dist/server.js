@@ -57,4 +57,14 @@ function restrictAccess(req, res, next) {
     //  });
 
 }
+
+var routes = {
+    GET: {
+        '/users': function users(req, res) {
+            console.log('ss');
+            res.end('tobi,loki');
+        },
+        '/user/:id': function userId(req, res, id) {
+
+        } } };
 //# sourceMappingURL=server.js.map
