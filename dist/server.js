@@ -12,15 +12,16 @@ var _admin = require('./admin');var _admin2 = _interopRequireDefault(_admin);fun
 
 //connect中间件组件是一个函数，他拦截HTTP服务器提供得请求和相应对象，执行逻辑然后或者结束响应，或者把它传递给下一个中间件组件。Connect用分排期把中间件'连接'在一起
 // 业务逻辑
+
 var app = (0, _connect2.default)();
-// app.all('*', function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-//     res.header("X-Powered-By", ' 3.2.1');
-//     res.header("Content-Type", "application/json;charset=utf-8");
-//     next();
-// });
+/* app.all('*', function(req, res, next) {
+                                        res.header("Access-Control-Allow-Origin", "*");
+                                        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+                                        res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+                                        res.header("X-Powered-By", ' 3.2.1');
+                                        res.header("Content-Type", "application/json;charset=utf-8");
+                                        next();
+                                    }); */
 
 // 日志中间件
 app.use((0, _logger2.default)(':method :url'));
