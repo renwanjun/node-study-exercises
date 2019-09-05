@@ -1,5 +1,5 @@
 {
-  "name": "node-end",
+  "name": "node-service",
   "version": "1.0.0",
   "description": "provide interface",
   "main": "server.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/renwanjun/node-end.git"
+    "url": "git+https://github.com/renwanjun/node-service.git"
   },
   "author": "renwj",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/renwanjun/node-end/issues"
+    "url": "https://github.com/renwanjun/node-service/issues"
   },
-  "homepage": "https://github.com/renwanjun/node-end#readme",
+  "homepage": "https://github.com/renwanjun/node-service#readme",
   "dependencies": {
     "connect": "^3.6.5",
     "express": "^4.16.2",
