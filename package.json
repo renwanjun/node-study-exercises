@@ -23,7 +23,7 @@
   "dependencies": {
     "connect": "^3.6.5",
     "express": "^4.16.2",
-    "mime": "~1.2.7",
+    "mime": "~2.4.4",
     "socket.io": "~0.9.6"
   },
   "devDependencies": {
