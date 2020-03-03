@@ -4,6 +4,7 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "node",
             "request": "launch",
@@ -15,7 +16,7 @@
             "request": "launch",
             "name": "启动",
             "program": "${workspaceFolder}/dist/server.js", // debug程序得绝对路径
-            "cwd":"${workspaceFolder}/src",
+            "cwd":"${workspaceFolder}/src/server.js",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script", "dev-build"
