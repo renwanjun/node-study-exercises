@@ -1,4 +1,8 @@
-const fs=require('fs')
+/**
+ * @tutorial
+ * 文件打开、写入、读取、关闭练习
+ */
+var  fs=require('fs')
 
 const f1='/read.txt'
 fs.stat(`${__dirname}${f1}`,function(err,stats){
@@ -43,7 +47,7 @@ fs.open('test.log','a',function(err,fd){
         bufferLength,
         filePosition,
         function(err,written){
-            if(err)throw err;
+            if(err) throw err;
             console.log(`write ${written} bytes`)
         }
     )

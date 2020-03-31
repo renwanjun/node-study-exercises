@@ -3,18 +3,16 @@
 const util=require('util')
 const fs=require('fs')
 
+util.log('Hello')
 
-let readStream=fs.createReadStream('read.txt');
+const txtPath='a.txt'
+let readStream=fs.createReadStream(txtPath);
 readStream.on('data',function(data){
     console.log('start',data.toString())
 })
 readStream.on('end',function(){
     console.log('file ended')
 })
-
-
-//console.log(slice)
-util.log('Hello');
 let v=0;
 function a(v){
     let v2=100;
@@ -38,5 +36,26 @@ function factorial(num){
         return num*factorial(num-1)
     }
 }
-factorial(3)
-// console.log(factorial(3))
+/**
+ * 尾递归优化
+ */
+
+function factorial(num){
+    try{
+        fac(num)
+    }catch(e){
+        console.log(e)
+    }
+    function fac(num,total=1){
+        if(typeof num !== 'number' || num<1){
+            throw new Error(`${num}不符合数据规范`)
+        }
+        if(num<1){
+            return total
+        }else{
+            return fac(num-1,num*total)
+        }
+    }
+}
+factorial(-3)
+// console.log()
