@@ -3,7 +3,8 @@
  */
 var http = require('http');
 var util = require('util')
-
+var fs = require('fs')
+require('./es6-extent')
 
 function createServer(port) {
     return new Promise((resolve, reject) => {
@@ -24,17 +25,45 @@ server.then(({ req, res }) => {
         case '/getFile':
             // 用二进制回复内容
             res.write(Buffer.from('sss'));
+            getFile('read.txt')
             break;
         case '/':
         default:
-            // 回复内容
+            // 回复内容 
             res.write('Hello,world');
 
     }
-    console.log(req.url)
-    res.end(util.inspect(req.headers));
+    // console.log(req.url)
+    // res.end(util.inspect(req.headers));
+}).then(content=>{
+    console.log(content)
+}).catch(err=>console.log(err))
+.finally(()=>{
+    console.log('finally')
+})
+.done(()=>{
+    console.log('done')
 })
 
+function getFile(name) {
+    return new Promise((resolve, reject) => {
+        fs.open(`${__dirname}/${name}`, 'r', function (err, fd) {
+            if (err) throw err;
+            var readBuffer = Buffer.alloc(1024),
+                bufferOffset = 0,
+                bufferLength = readBuffer.length,
+                filePosition = 1
+            fs.read(fd, readBuffer, bufferOffset, bufferLength, filePosition, function (err, readBytes) {
+                if (err) throw err;
+                //console.log(`just read ${readBytes} bytes`)
+                if (readBytes > 0) {
+                    console.log(readBuffer.slice(0, readBytes))
+                }
+                resolve(readBuffer)
+            })
+        })
+    })
+}
 
 /**
  * 简写形式

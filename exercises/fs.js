@@ -13,7 +13,7 @@ fs.stat(`${__dirname}${f1}`,function(err,stats){
 })
 
 /**
- * 打开一个文件并读取
+ * 打开一个文件并读取,将读取内容保存为二进制形式
  */
 fs.open(`${__dirname}${f1}`,'r',function(err,fd){
     if(err){
