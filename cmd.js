@@ -9,6 +9,7 @@ const txtPath='a.txt'
 let readStream=fs.createReadStream(txtPath);
 readStream.on('data',function(data){
     console.log('start',data.toString())
+    console.log('ss')
 })
 readStream.on('end',function(){
     console.log('file ended')

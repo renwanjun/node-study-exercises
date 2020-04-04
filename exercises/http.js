@@ -39,7 +39,7 @@ server.then(({ req, res }) => {
     console.log(content)
 }).catch(err=>console.log(err))
 .finally(()=>{
-    console.log('finally')
+    console.log('')
 })
 .done(()=>{
     console.log('done')
