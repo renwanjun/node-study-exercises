@@ -34,7 +34,7 @@ server.then(({ req, res }) => {
 
     }
     // console.log(req.url)
-    // res.end(util.inspect(req.headers));
+    res.end(util.inspect(req.headers));
 }).then(content=>{
     console.log(content)
 }).catch(err=>console.log(err))
