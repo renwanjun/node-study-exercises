@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 const fs=require('fs')
 const events=require('events')
 class Watcher extends events.EventEmitter{

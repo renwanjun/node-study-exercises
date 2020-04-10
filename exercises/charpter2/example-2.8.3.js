@@ -1,3 +1,8 @@
+/**
+ * 聊天室
+ * 加入聊天室方法
+ * telnet host port
+ */
 // const events = require('events');
 const net = require('net');
 const EventEmitter = require('events').EventEmitter;
@@ -11,11 +16,11 @@ channel.on('join', function(id, client){
 
     this.clients[id] = client
     this.subscriptions[id] = (senderId, message) => {
-        this.clients[id].write(`用户${id}输出：${message}`)
+        // this.clients[id].write(`用户${id}输出：${message}`)
         // 忽略发出这一广播数据的用户
         if (id != senderId) {
             console.log(message)
-            this.clients[id].write(message)
+            this.clients[id].write(`用户${id}输出：${message}`)
         }
     }
     // 添加一个专门针对当前用户的broadcast事件监听器
