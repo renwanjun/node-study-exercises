@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-study-exersices",
+  "version": "1.0.0",
+  "description": "项目简介 --------------------------------------- 开始时间：2020.03.28   发起缘因：学习NodeJS开发前后端项目，实践《Node.js实战》中示例，该项目中实践内容包括打包编译工具的使用、使用express框架开发后端服务、ejs模版渲染页面、整合前端框架静态资源等内容。",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renwanjun/node-study-exercises.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renwanjun/node-study-exercises/issues"
+  },
+  "homepage": "https://github.com/renwanjun/node-study-exercises#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0"
+  }
+}
